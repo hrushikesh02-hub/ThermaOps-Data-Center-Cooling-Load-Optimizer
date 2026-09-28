@@ -8,13 +8,13 @@ This is a local research dashboard and simulation. It does not control equipment
 
 ## Features
 
-- Replay 1,500 records from five data centers, with power trends and temperature checks.
-- Predict cooling power, cooling load, server inlet temperature and rack hot spots.
-- Search with Genetic Algorithm (GA) or Differential Evolution (DE).
-- Set temperature limits, a power cap, extra temperature allowance and control ranges.
-- Preview manual settings, apply recommendations to simulation, and export saved history.
-- Check data quality, model accuracy and whether conditions are covered by training data.
-- Use the same functionality through 17 documented API operations.
+* Replay 1,500 records from five data centers, with power trends and temperature checks.
+* Predict cooling power, cooling load, server inlet temperature and rack hot spots.
+* Search with Genetic Algorithm (GA) or Differential Evolution (DE).
+* Set temperature limits, a power cap, extra temperature allowance and control ranges.
+* Preview manual settings, apply recommendations to simulation, and export saved history.
+* Check data quality, model accuracy and whether conditions are covered by training data.
+* Use the same functionality through 17 documented API operations.
 
 ## Project structure
 
@@ -142,4 +142,11 @@ corrected dataset is reconstructed in memory during checks instead of storing
 another duplicate CSV. Small, required CSVs are versioned; `.gitattributes`
 preserves their exact bytes for model fingerprint checks.
 
+## Developed By
 
+**Gayatri Rajput**
+**Hrushikesh Thombare**
+
+### Project
+
+**ThermaOps — Data Center Cooling Optimizer**
