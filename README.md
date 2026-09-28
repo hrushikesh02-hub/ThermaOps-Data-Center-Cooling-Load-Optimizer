@@ -36,7 +36,7 @@ ThermaOps/
 ├── frontend/                # HTML templates, JavaScript, CSS and API reference
 ├── tests/                   # Model, training, API and recommendation regressions
 ├── outputs/                 # Generated reports and local operator database; ignored
-├── docs/                    # Modeling notes and cleanup record
+├── docs/                    # Modeling notes
 ├── .gitattributes
 ├── .gitignore
 ├── requirements.txt
@@ -142,13 +142,4 @@ corrected dataset is reconstructed in memory during checks instead of storing
 another duplicate CSV. Small, required CSVs are versioned; `.gitattributes`
 preserves their exact bytes for model fingerprint checks.
 
-## GitHub preparation
 
-- Source, tests, documentation, dependencies, training settings and required data are included.
-- Trained model weights, operator history, logs, caches, environments and generated reports are ignored.
-- No credentials or API keys are needed by this application.
-- A fresh clone can train its own four-model bundle using the command above.
-- Review `git status --short` before committing. Do not force-add ignored runtime files.
-- Confirm redistribution rights for the supplied research data before making a repository public; no dataset license was supplied.
-
-See [cleanup details](docs/CLEANUP.md) for moved and excluded files and verification results.
