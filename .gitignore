@@ -1,0 +1,49 @@
+# Python and local environments
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Secrets and machine configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+secrets*.json
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Trained weights are reproducible; the delivered local copy includes four.
+ml/models/artifacts/
+*.joblib
+*.pkl
+*.pickle
+
+# Reports, logs, operator history, candidate models, caches and backups
+outputs/*
+!outputs/.gitkeep
+runtime/
+*.sqlite3*
+*.db
+*.log
+*.tmp
+*.bak
+*.zip
+datasets/backups/
+
+# Required raw and processed CSVs are intentionally versioned (about 10 MB total).
+# No frontend package manager or build is needed.
+node_modules/

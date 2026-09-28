@@ -1,0 +1,10 @@
+* text=auto
+*.py text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+# Preserve dataset bytes: model profiles verify SHA-256 on every startup.
+*.csv -text
+*.joblib binary

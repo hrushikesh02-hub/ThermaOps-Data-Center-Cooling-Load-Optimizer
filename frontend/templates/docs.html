@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ThermaOps API reference</title><link rel="stylesheet" href="/static/styles.css"></head><body><main><div class="page-heading"><div><div class="eyebrow">DEVELOPER REFERENCE</div><h1>ThermaOps local API</h1><p>Same-origin JSON API · no hardware actuation</p></div><a class="button secondary" href="/">Back to dashboard</a></div><div class="panel data-section"><h2>API contract</h2><p><a href="/api/openapi.json">Download the OpenAPI specification</a> for request schemas and responses.</p><table class="data-table"><thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>GET</td><td>/api/health</td><td>Readiness and optimizer availability</td></tr>
+<tr><td>GET</td><td>/api/config</td><td>Sites, algorithms and uncertainty allowances</td></tr>
+<tr><td>GET</td><td>/api/states?dc=DC_1</td><td>Paginated historical states</td></tr>
+<tr><td>GET</td><td>/api/states/{state_id}</td><td>State, baseline prediction, simulated setpoints</td></tr>
+<tr><td>GET</td><td>/api/trends?dc=DC_1&amp;until={state_id}</td><td>Historical measurements up to the selected state</td></tr>
+<tr><td>GET, PUT</td><td>/api/limits/{dc}</td><td>Read/update per-site limits with expected_revision</td></tr>
+<tr><td>POST</td><td>/api/predict</td><td>Predict state_id, optionally with all four controls</td></tr>
+<tr><td>POST</td><td>/api/optimize</td><td>Optimize state_id with GA or DE; seed defaults to 42</td></tr>
+<tr><td>GET</td><td>/api/history?dc=DC_1</td><td>Paginated persistent run history</td></tr>
+<tr><td>GET</td><td>/api/history/{run_id}</td><td>Inspect a saved result and its policy</td></tr>
+<tr><td>POST</td><td>/api/recommendations/{run_id}/apply</td><td>Save validated controls in simulation; state_id and expected_revision required</td></tr>
+<tr><td>GET</td><td>/api/history.csv?dc=DC_1</td><td>Export all matching runs, including failed searches</td></tr>
+<tr><td>GET</td><td>/api/datasets</td><td>Dataset validation and provenance</td></tr>
+<tr><td>GET</td><td>/api/models</td><td>Recomputed validation/test metrics</td></tr>
+<tr><td>GET</td><td>/api/docs, /api/openapi.json</td><td>Reference and machine-readable schema</td></tr></tbody></table></div>
+<div class="panel data-section"><h2>Request and result handling</h2><p>POST and PUT require application/json. Unknown fields, invalid bounds, booleans in numeric fields, NaN and infinity are rejected. A stale revision or snapshot returns 409. A busy optimizer returns 429. All errors are JSON.</p><p>An optimization response uses HTTP 201 because it creates a saved run, including when status is infeasible. Only a non-null, feasible recommendation can be applied. Applying a run twice is idempotent. Changing limits invalidates earlier recommendations.</p><p>Limits: inlet 18–27°C; hotspot 20–35°C; reserve 0–5°C; optional point-prediction power cap 1–10,000 kW. Search bounds must stay within 18–27°C for setpoint/supply and 30–100% for fan/pump. Bounds and recommendations use 0.1-unit increments.</p><div class="data-note">Thermal checks add one-sided validation residual allowances to predicted temperatures. This empirical margin has no guaranteed coverage under distribution shift. The server listens only on loopback and assumes a trusted local operator; it has no remote identity or facility control integration.</div></div></main></body></html>
+

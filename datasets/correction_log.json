@@ -1,0 +1,18 @@
+{
+  "train": {
+    "server_inlet_safety_margin_c": 7000,
+    "hotspot_safety_margin_c": 7000
+  },
+  "validation": {
+    "server_inlet_safety_margin_c": 1500,
+    "hotspot_safety_margin_c": 1500
+  },
+  "test": {
+    "server_inlet_safety_margin_c": 1500,
+    "hotspot_safety_margin_c": 1500
+  },
+  "research_ready_dataset": {
+    "server_inlet_safety_margin_c": 10000,
+    "hotspot_safety_margin_c": 10000
+  }
+}

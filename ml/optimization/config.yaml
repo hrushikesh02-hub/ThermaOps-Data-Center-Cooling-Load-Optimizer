@@ -1,0 +1,32 @@
+# Optimization Configuration
+
+optimization:
+  # Random seed for GA/DE algorithms to ensure research reproducibility
+  random_seed: 42
+  
+  # Bounds for Decision Variables [min, max]
+  bounds:
+    cooling_setpoint_c: [18.0, 27.0]
+    supply_air_temperature_c: [18.0, 27.0]
+    fan_speed_pct: [30.0, 100.0]
+    pump_speed_pct: [30.0, 100.0]
+    
+  # Hard Thermal Safety Thresholds
+  thermal_constraints:
+    max_server_inlet_c: 27.0
+    max_hotspot_c: 35.0
+    
+  # Diagnostic penalty weights; hard inequalities determine feasibility
+  penalties:
+    thermal_violation_weight: 1000000.0
+    ood_violation_weight: 10000.0
+    
+  # OOD Settings
+  ood:
+    method: "mahalanobis"
+    threshold_percentile: 99.0 # Use 99th percentile of training distances
+    
+  # Genetic Algorithm / Differential Evolution Parameters
+  algorithm:
+    population_size: 50
+    max_generations: 100
